@@ -85,9 +85,7 @@ public class Control7 {
                         avg = sum * 1.0 / arr.length;
 
 
-                        System.out.println(Arrays.toString(arr));
-                        System.out.printf("최대: %d 최소: %d\n", max, min);
-                        System.out.printf("합: %d, 평균: %2.5f\n", sum, avg);
+                        System.out.printf("합계 : %d, 평균 : %5.2f, 최대 : %d, 최소 : %d\n", sum, avg, max, min);
                         break;
                     }
                 }
@@ -100,80 +98,87 @@ public class Control7 {
                 // 1. 배열값 출력
                 // 2. 배열값이 합과 평균을 출력
                 // 3. 최대, 최소 값 출력
+                while (true) {
+                    System.out.print("배열에 들어갈 Number1(1~10): ");
+                    int arrNum = sc.nextInt();
+                    System.out.print("배열에 들어갈 Number2(1~10): ");
+                    int arrNum2 = sc.nextInt();
+                    if (!(arrNum >= 1 && arrNum <= 10) && !(arrNum2 >= 1 && arrNum2 <= 10)) {
+                        System.out.print("1부터 10까지의 숫자만 입력하세요\n");
+                    } else {
+                        int arr[][] = new int[arrNum][arrNum2];
 
-                System.out.print("배열에 들어갈 Number1(1~10): ");
-                int arrNum = sc.nextInt();
-                System.out.print("배열에 들어갈 Number2(1~10): ");
-                int arrNum2 = sc.nextInt();
-                if (!(arrNum >= 1 && arrNum <= 10) && !(arrNum2 >= 1 && arrNum2 <= 10)) {
-                    System.out.print("1부터 10까지의 숫자만 입력하세요");
-
-                } else {
-                    int arr[][] = new int[arrNum][arrNum2];
-
-                    for (int i = 0; i < arr.length; i++) {
-                        for (int j = 0; j < arr[i].length; j++) {
-                            System.out.printf("%d___배열에 1부터 10까지의 숫자만 입력: ", j + 1);
-                            int num = sc.nextInt();
-                            if (i == 0 && j == 0) {
-                                arr[i][j] = num;
-                            } else {
-                                boolean flag = true;
-                                point:
-                                for (int k = 0; k <= i; k++) {
-                                    for (int n : arr[k]) {
-                                        if (n == num) {
-                                            System.out.printf("%d 중복발생\n", j);
-                                            flag = false;
-                                            j--;
-                                            break point;
+                        for (int i = 0; i < arr.length; i++) {
+                            for (int j = 0; j < arr[i].length; j++) {
+                                System.out.printf("%d___배열에 1부터 50까지의 숫자만 입력: ", j + 1);
+                                int num = sc.nextInt();
+                                if (num >= 1 && num <= 50) {
+                                    if (i == 0 && j == 0) {
+                                        arr[i][j] = num;
+                                    } else {
+                                        boolean flag = true;
+                                        point:
+                                        for (int k = 0; k <= i; k++) {
+                                            for (int n : arr[k]) {
+                                                if (n == num) {
+                                                    System.out.printf("%d 중복발생\n", j);
+                                                    flag = false;
+                                                    j--;
+                                                    break point;
+                                                }
+                                            }
                                         }
+
+                                        if (flag == true) {
+
+                                            arr[i][j] = num;
+                                        }
+
                                     }
+                                } else {
+                                    j--;
+                                    System.out.printf("%d__1~50까지의 숫자만을 입력", j + 1);
                                 }
+                            }
+                        }
 
-                                if (flag == true) {
 
-                                    arr[i][j] = num;
+                        for (int a[] : arr) {
+                            for (int n : a) {
+                                System.out.print(n + " ");
+                            }
+                            System.out.println();
+                        }
+
+                        int max = 0;
+                        int min = 51;
+                        int sum = 0;
+                        for (int i = 0; i < arrNum; i++) {
+                            for (int j = 0; j < arrNum2; j++) {
+                                if (arr[i][j] > max) {
+                                    max = arr[i][j];
                                 }
-
+                                if (arr[i][j] < min) {
+                                    min = arr[i][j];
+                                }
+                                sum += arr[i][j];
                             }
                         }
+                        double avg = 0.0;
+                        avg = (double) sum / arr.length;
+
+                        System.out.printf("합계 : %d, 평균 : %5.2f, 최대 : %d, 최소 : %d\n", sum, avg, max, min);
+                        break;
+
                     }
-
-                    for (int a[] : arr) {
-                        for (int n : a) {
-                            System.out.print(n + " ");
-                        }
-                        System.out.println();
-                    }
-
-                    int max = 0;
-                    int min = 51;
-                    int sum = 0;
-                    for (int i = 0; i < arr.length; i++) {
-                        for (int j = 0; j < arr.length; j++) {
-                            if (arr[i][j] > max) {
-                                max = arr[i][j];
-                            }
-                            if (arr[i][j] < min) {
-                                min = arr[i][j];
-                            }
-                            sum += arr[i][j];
-                        }
-                    }
-                    double avg = 0.0;
-                    avg = (double)sum / arr.length;
-
-                    System.out.printf("합계 : %d, 평균 : %5.2f, 최대 : %d, 최소 : %d\n", sum, avg, max, min);
-
-
                 }
             } else {
                 System.out.println("Invalid Command....");
             }
             sc.close();
-//   코드에서 sc.close()는 실행되지 않는다. -> while (true) 무한 루프 안에 break가 없기 때문.
+            break;
         }
+        System.out.println("End Application..");
     }
 }
 
