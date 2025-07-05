@@ -9,6 +9,7 @@ public class Car {
         this.name = "Default";
         this.color = "White";
         this.size = 100;
+
     }
 
     public Car(String name, String color, double size) {
