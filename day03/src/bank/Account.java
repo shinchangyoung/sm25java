@@ -21,10 +21,14 @@ public class Account  {
         this.balance += money;
         System.out.printf("입금처리 완료\n");
     }
-    public void withdraw(double money) {
+    public void withdraw(double money) throws NotEnoughBalanceException {
         //출금 금액이 balance보다 커야함
         if(money >= this.balance ) {
-            System.out.printf("잔액부족\n");
+         //   throw new NotEnoughBalanceException("Ex0001");
+        }
+
+        if(money < this.balance ) {
+            //throw new NegativeValueException("Ex0002");
         }
 
         this.balance -= money;

@@ -13,6 +13,6 @@ public class Bank {
 
         System.out.println(account2.getBalance());
 
-        account1.withdraw(10000);
+
     }
 }
