@@ -31,9 +31,9 @@ public class CustOracleRepository implements SmRepository<CustDto, String> {
     public List<CustDto> selectAll() {
         System.out.println("Oracle: Select All Cust Table");
         List<CustDto> custDtos = new ArrayList<>();
-        custDtos.add(new CustDto("id01","pw01","신창영"));
-        custDtos.add(new CustDto("id02","pw02","신우정"));
-        custDtos.add(new CustDto("id03","pw03","신양호"));
+        custDtos.add(new CustDto("id01","pw01","이말숙"));
+        custDtos.add(new CustDto("id02","pw02","김말숙"));
+        custDtos.add(new CustDto("id03","pw03","황말숙"));
         return custDtos;
     }
 
